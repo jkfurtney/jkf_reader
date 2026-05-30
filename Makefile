@@ -20,7 +20,10 @@ $(PDF): $(MAIN).tex
 
 # Impose pages for booklet printing (requires pdfbook2)
 imposed: $(PDF)
-	pdfbook2 --paper=letterpaper $(PDF)
+	pdfbook2 --paper=letterpaper --no-crop \
+		--inner-margin=0 --outer-margin=0 \
+		--top-margin=0 --bottom-margin=0 \
+		$(PDF)
 
 clean:
 	rm -f *.aux *.log *.out *.toc $(PDF) $(IMPOSED)
