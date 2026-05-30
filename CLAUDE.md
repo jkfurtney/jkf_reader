@@ -30,10 +30,34 @@ Install deps (if needed): `sudo apt install texlive-latex-extra texlive-extra-ut
 
 ## Printing
 
-Print `booklet-book.pdf` duplex, **flip on long edge**. Fold and saddle-stitch
+Print `booklet-book.pdf` duplex, **flip on short edge**. Fold and saddle-stitch
 (staple through spine). Aim for 8 or 16 pages per signature.
 
 ## Adding poems
+
+### Quickstart: poem text in i.txt
+
+1. Paste the plain-text poem into `i.txt` (overwrite whatever is there)
+2. Run the converter and review the output:
+   ```bash
+   python3 poem2latex.py i.txt
+   ```
+3. In `booklet.tex`, find the last `\clearpage` before `\end{document}` and add:
+   ```latex
+   \clearpage
+
+   % ── Poem title ──────────────────────────────────────────────
+   \poemtitle{Title Here}
+   \poemauthor{Author Name}
+
+   \begin{verse}
+   <paste converter output here>
+   \end{verse}
+   ```
+4. If the poem's first lines are a title/author/epigraph (as with Browning's
+   Childe Roland), strip those from the verse block and use `\poemtitle` /
+   `\poemauthor` instead.
+5. `make` to check for overfull lines, then `make imposed` for the print PDF.
 
 ### The converter script
 
