@@ -1,0 +1,101 @@
+# jkf_reader — LaTeX Poetry Booklet
+
+A LaTeX project for printing poetry as saddle-stitched booklets (signatures).
+The physical format is 8.5×11 paper folded along the long axis, producing
+4.25×11 pages — tall and thin.
+
+## Build
+
+```bash
+make          # → booklet.pdf  (content at final page size)
+make imposed  # → booklet-book.pdf  (imposed for duplex printing, requires pdfbook2)
+make clean
+```
+
+`make` will fail with an error if any verse line wraps (overfull hbox). Fix
+the line before proceeding — don't widen margins to suppress the error.
+
+Install deps (if needed): `sudo apt install texlive-latex-extra texlive-extra-utils`
+
+## Printing
+
+Print `booklet-book.pdf` duplex, **flip on long edge**. Fold and saddle-stitch
+(staple through spine). Aim for 8 or 16 pages per signature.
+
+## Adding poems
+
+### The converter script
+
+`poem2latex.py` converts a plain-text poem to a LaTeX verse block:
+
+```bash
+python3 poem2latex.py mypoem.txt
+```
+
+It handles:
+- `\\` line endings within stanzas
+- `\\!` + blank line at stanza breaks
+- Leading whitespace → `\vin` tokens (one per 4 spaces)
+- Escapes `%` and `&`
+
+Paste the output into `booklet.tex` wrapped in `\begin{verse}...\end{verse}`.
+
+### Poem template in booklet.tex
+
+```latex
+% ── Poem title ──────────────────────────────────────────────
+\poemtitle{Title Here}
+
+\begin{verse}
+First line of poem,\\
+second line of poem.\\!
+
+Second stanza begins here,\\
+and ends here.
+\end{verse}
+
+\clearpage
+```
+
+### Known gotcha: single vs double backslash
+
+Every line in a verse block must end with `\\`. A single `\` at end of line
+is a control-space — it silently merges the line with the next one rather than
+breaking. This is easy to introduce when manually editing lines that end with a
+curly apostrophe (`'`). The `poem2latex.py` script generates `\\` correctly;
+the bug only appears with manual edits.
+
+## LaTeX verse cheatsheet
+
+| Syntax | Effect |
+|---|---|
+| `line text\\` | line break |
+| `last stanza line\\!` | line break + stanza gap |
+| `\vin text` | indent one level (continuation line) |
+| `\poemtitle{...}` | formatted poem title (memoir class) |
+
+## Source poems
+
+- `i.txt` — Tennyson, "Ulysses" (public domain; sourced from plain text)
+
+Pre-1928 works are public domain in the US. For clean plain-text sources use
+Project Gutenberg (`gutenberg.org`), not modern scholarly editions (which may
+have their own copyright on editorial matter).
+
+## Fonts
+
+Currently uses Latin Modern (`lmodern`) — the scalable version of Computer
+Modern, required for `microtype` font expansion. To switch to a different
+serif, uncomment/add a font package before `\usepackage[T1]{fontenc}`, e.g.:
+
+```latex
+\usepackage{ebgaramond}
+```
+
+## Pushing to GitHub
+
+SSH keys are not configured in this environment. Push via the gh CLI token:
+
+```bash
+TOKEN=$(gh auth token) && git push https://x-access-token:${TOKEN}@github.com/jkfurtney/jkf_reader.git master
+```
