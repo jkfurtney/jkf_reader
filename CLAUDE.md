@@ -12,8 +12,19 @@ make imposed  # → booklet-book.pdf  (imposed for duplex printing, requires pdf
 make clean
 ```
 
-`make` will fail with an error if any verse line wraps (overfull hbox). Fix
-the line before proceeding — don't widen margins to suppress the error.
+`make` will fail with an error if any verse line produces an overfull hbox.
+
+**Known limitation — silent runovers:** memoir's verse environment does its
+own "runover" line wrapping (a typographic feature) that bypasses LaTeX's
+normal overfull-hbox system entirely. Long lines wrap silently with no
+warning in the log. The current `make` check does NOT catch these. If a
+line visually wraps in the PDF, the fix is to shorten the line or reduce
+the font size — not to widen the margins.
+
+**Possible future fix:** wrap each verse line in a `\VL{...}` macro that
+uses `\sbox`/`\wd` to measure the line against `\linewidth` and writes
+a `VERSE LINE TOO WIDE` marker to the log, then grep for it in the Makefile.
+`poem2latex.py` would need to emit `\VL{text}\\` instead of `text\\`.
 
 Install deps (if needed): `sudo apt install texlive-latex-extra texlive-extra-utils`
 

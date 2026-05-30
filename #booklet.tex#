@@ -1,4 +1,4 @@
-\documentclass[10pt]{memoir}
+\documentclass[12pt]{memoir}
 
 % Page geometry: 4.25in x 11in (8.5x11 folded along long axis)
 \usepackage[
@@ -10,7 +10,6 @@
   outer=0.4in
 ]{geometry}
 
-\usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
@@ -31,9 +30,9 @@
 % Verse environment settings
 \setlength{\vleftmargin}{0em}   % no extra indent on verse blocks
 
-\newcommand{\poemauthor}[1]{{\small\itshape #1}\par\medskip}
-
-\title{Poems}
+\title{\textit{Ulysses}}
+\author{Alfred Lord Tennyson}
+\date{}
 
 \begin{document}
 
@@ -44,8 +43,7 @@
 \mainmatter
 
 % ── Poem 1 ──────────────────────────────────────────────────
-\poemtitle{Ulysses}
-\poemauthor{Alfred Lord Tennyson}
+\poemtitle{}
 
 \begin{verse}
 It little profits that an idle king,\\
@@ -54,10 +52,10 @@ Match'd with an aged wife, I mete and dole\\
 Unequal laws unto a savage race,\\
 That hoard, and sleep, and feed, and know not me.\\
 I cannot rest from travel: I will drink\\
-Life to the lees: All times I have enjoy'd\\
+Life to the lees: All times I have enjoy'd\\K 
 Greatly, have suffer'd greatly, both with those\\
 That loved me, and alone, on shore, and when\\
-Thro' scudding drifts the rainy Hyades\\
+Thro' scudding drifts the rainy Hyades\
 Vext the dim sea: I am become a name;\\
 For always roaming with a hungry heart\\
 Much have I seen and known; cities of men\\
@@ -66,12 +64,12 @@ Myself not least, but honour'd of them all;\\
 And drunk delight of battle with my peers,\\
 Far on the ringing plains of windy Troy.\\
 I am a part of all that I have met;\\
-Yet all experience is an arch wherethro'\\
+Yet all experience is an arch wherethro'\
 Gleams that untravell'd world whose margin fades\\
 For ever and forever when I move.\\
 How dull it is to pause, to make an end,\\
 To rust unburnish'd, not to shine in use!\\
-As tho' to breathe were life! Life piled on life\\
+As tho' to breathe were life! Life piled on life\
 Were all too little, and of one to me\\
 Little remains: but every hour is saved\\
 From that eternal silence, something more,\\
@@ -119,7 +117,7 @@ We are not now that strength which in old days\\
 Moved earth and heaven, that which we are, we are;\\
 One equal temper of heroic hearts,\\
 Made weak by time and fate, but strong in will\\
-To strive, to seek, to find, and not to yield.\\!
+To strive, to seek, to find, and not to yield.
 
 \end{verse}
 
