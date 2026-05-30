@@ -13,3 +13,8 @@
 
 # Output PDFs (keep source, ignore compiled output)
 *.pdf
+
+# Emacs
+*~
+\#*\#
+.\#*
