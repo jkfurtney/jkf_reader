@@ -14,6 +14,10 @@
 # Output PDFs (keep source, ignore compiled output)
 *.pdf
 
+# Scratch input files
+i.txt
+i2.txt
+
 # Emacs
 *~
 \#*\#
