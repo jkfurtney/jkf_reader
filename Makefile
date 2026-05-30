@@ -5,7 +5,7 @@ IMPOSED = $(MAIN)-imposed.pdf
 .PHONY: all imposed clean
 
 # Compile content PDF (run twice for page numbers/TOC)
-all: $(PDF)
+all: $(PDF) imposed
 
 $(PDF): $(MAIN).tex
 	pdflatex -interaction=nonstopmode $(MAIN).tex
