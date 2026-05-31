@@ -8,7 +8,7 @@ The physical format is 8.5×11 paper folded along the long axis, producing
 
 ```bash
 make          # → booklet.pdf  (content at final page size)
-make imposed  # → booklet-book.pdf  (imposed for duplex printing, requires pdfbook2)
+make imposed  # → booklet-book.pdf  (imposed for duplex printing, requires pdfpages)
 make clean
 ```
 
@@ -30,7 +30,7 @@ Install deps (if needed): `sudo apt install texlive-latex-extra texlive-extra-ut
 
 ## Printing
 
-Print `booklet-book.pdf` duplex, **flip on short edge**. Fold and saddle-stitch
+Print `booklet-book.pdf` duplex, **flip on long edge**. Fold and saddle-stitch
 (staple through spine). Aim for 8 or 16 pages per signature.
 
 ## Adding poems
@@ -111,7 +111,17 @@ the bug only appears with manual edits.
 
 ## Source poems
 
-- `i.txt` — Tennyson, "Ulysses" (public domain; sourced from plain text)
+- Tennyson, "Ulysses"
+- Browning, "Childe Roland to the Dark Tower Came"
+- Blake, "The Tyger"
+- Shakespeare, "Tomorrow, and tomorrow, and tomorrow" (Macbeth)
+- Shakespeare, "To be, or not to be" (Hamlet)
+- Shakespeare, "Get thee to a nunnery" (Hamlet)
+- Byron, "She Walks in Beauty"
+- Shelley, "Ozymandias"
+- Shakespeare, "Friends, Romans, countrymen" (Julius Caesar)
+
+All pre-1928, public domain in the US.
 
 Pre-1928 works are public domain in the US. For clean plain-text sources use
 Project Gutenberg (`gutenberg.org`), not modern scholarly editions (which may

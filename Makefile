@@ -1,6 +1,5 @@
 MAIN = booklet
 PDF  = $(MAIN).pdf
-IMPOSED = $(MAIN)-imposed.pdf
 
 .PHONY: all imposed clean
 
@@ -18,12 +17,10 @@ $(PDF): $(MAIN).tex
 		exit 1; \
 	fi
 
-# Impose pages for booklet printing (requires pdfbook2)
+# Impose pages for booklet printing
 imposed: $(PDF)
-	pdfbook2 --paper=letterpaper --no-crop \
-		--inner-margin=0 --outer-margin=0 \
-		--top-margin=0 --bottom-margin=0 \
-		$(PDF)
+	python3 impose.py
+	mv impose.pdf booklet-book.pdf
 
 clean:
-	rm -f *.aux *.log *.out *.toc $(PDF) $(IMPOSED)
+	rm -f *.aux *.log *.out *.toc $(PDF) booklet-book.pdf impose.tex
