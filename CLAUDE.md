@@ -120,6 +120,7 @@ the bug only appears with manual edits.
 - Byron, "She Walks in Beauty"
 - Shelley, "Ozymandias"
 - Shakespeare, "Friends, Romans, countrymen" (Julius Caesar)
+- Tennyson, "The Lotos-eaters"
 
 All pre-1928, public domain in the US.
 
